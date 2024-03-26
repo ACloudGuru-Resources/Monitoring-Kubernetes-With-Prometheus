@@ -23,11 +23,12 @@ overlay
 br_netfilter
 EOF
 
-3. Load the modules and open port 6443 at the firewall:
+3. Load the modules and open ports [6443 10250] at the firewall:
 
 sudo modprobe overlay
 sudo modprobe br_netfilter
 sudo firewall-cmd --add-port=6443/tcp --permanent
+sudo firewall-cmd --add-port=10250/tcp --permanent
 sudo firewall-cmd --reload
 
 4. Set the system configurations for Kubernetes networking:
@@ -130,11 +131,12 @@ overlay
 br_netfilter
 EOF
 
-3. Load the modules and open port 6443 at the firewall:
+3. Load the modules and open ports [6443 10250] at the firewall:
 
 sudo modprobe overlay
 sudo modprobe br_netfilter
 sudo firewall-cmd --add-port=6443/tcp --permanent
+sudo firewall-cmd --add-port=10250/tcp --permanent
 sudo firewall-cmd --reload
 
 4. Set the system configurations for Kubernetes networking:
