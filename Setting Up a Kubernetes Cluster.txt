@@ -12,10 +12,6 @@
 
 # Here are the commands used install containerd. Run these on all servers.
 
-# Distribution: Ubuntu 22.04 - Jammy Jellyfish
-# Size: Small
-# Tags: Kube Master, Kube Node
-
 # Disable swap:
 
 sudo swapoff -a
@@ -157,9 +153,8 @@ kubectl get nodes
 # You should see all three of your nodes listed. It should look something like this:
 
 NAME                           STATUS     ROLES           AGE     VERSION
-155f1d1c831c.mylabserver.com   NotReady   control-plane   2m21s   v1.30.3
-155f1d1c832c.mylabserver.com   NotReady   <none>          37s     v1.30.3
-155f1d1c833c.mylabserver.com   NotReady   <none>          12s     v1.30.3
+f8bbdd78c31c.mylabserver.com   NotReady   control-plane   2m13s   v1.31.0
+f8bbdd78c32c.mylabserver.com   NotReady   <none>          22s     v1.31.0
 
 # Note: The nodes are expected to have a STATUS of NotReady at this point
 
@@ -176,9 +171,8 @@ kubectl get nodes
 # You should see all three of your servers listed, and all should have a STATUS of "Ready". It should look something like this:
 
 NAME                           STATUS   ROLES           AGE     VERSION
-155f1d1c831c.mylabserver.com   Ready    control-plane   4m53s   v1.30.3
-155f1d1c832c.mylabserver.com   Ready    <none>          3m9s    v1.30.3
-155f1d1c833c.mylabserver.com   Ready    <none>          2m44s   v1.30.3
+f8bbdd78c31c.mylabserver.com   Ready    control-plane   3m36s   v1.31.0
+f8bbdd78c32c.mylabserver.com   Ready    <none>          105s    v1.31.0
 
 # Note: It may take a few moments for all nodes to enter the "Ready" status, so if they are not all "Ready", wait a few moments and try again.
 
@@ -189,18 +183,16 @@ kubectl get pods -n kube-system
 # Expected output:
 
 NAME                                                   READY   STATUS    RESTARTS   AGE
-calico-kube-controllers-5b9b456c66-2p9pn               1/1     Running   0          75s
-calico-node-jff8p                                      1/1     Running   0          75s
-calico-node-pwhfh                                      1/1     Running   0          75s
-calico-node-zj79n                                      1/1     Running   0          75s
-coredns-7db6d8ff4d-c48lp                               1/1     Running   0          5m5s
-coredns-7db6d8ff4d-ct4fd                               1/1     Running   0          5m5s
-etcd-155f1d1c831c.mylabserver.com                      1/1     Running   0          5m19s
-kube-apiserver-155f1d1c831c.mylabserver.com            1/1     Running   0          5m19s
-kube-controller-manager-155f1d1c831c.mylabserver.com   1/1     Running   0          5m19s
-kube-proxy-ljbjf                                       1/1     Running   0          3m40s
-kube-proxy-rsmwb                                       1/1     Running   0          3m15s
-kube-proxy-rtnwg                                       1/1     Running   0          5m5s
-kube-scheduler-155f1d1c831c.mylabserver.com            1/1     Running   0          5m19s
+calico-kube-controllers-6879d4fcdc-67mhx               1/1     Running   0          71s
+calico-node-rq8xs                                      1/1     Running   0          71s
+calico-node-t7h62                                      1/1     Running   0          71s
+coredns-6f6b679f8f-cx4dd                               1/1     Running   0          3m57s
+coredns-6f6b679f8f-grnvs                               1/1     Running   0          3m57s
+etcd-f8bbdd78c31c.mylabserver.com                      1/1     Running   0          4m2s
+kube-apiserver-f8bbdd78c31c.mylabserver.com            1/1     Running   0          4m5s
+kube-controller-manager-f8bbdd78c31c.mylabserver.com   1/1     Running   0          4m2s
+kube-proxy-bljnf                                       1/1     Running   0          2m16s
+kube-proxy-jgsss                                       1/1     Running   0          3m57s
+kube-scheduler-f8bbdd78c31c.mylabserver.com            1/1     Running   0          4m2s
 
 # You should have three pods with "calico" in the name, and all three should have a status of "Running".
